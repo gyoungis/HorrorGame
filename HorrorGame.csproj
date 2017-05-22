@@ -88,8 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamMouseLook.cs" />
+    <Compile Include="Assets\Scripts\Note.cs" />
     <Compile Include="Assets\Scripts\characterController.cs" />
-    <Compile Include="Assets\flashlight.cs" />
+    <Compile Include="Assets\Scripts\flashlight.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
