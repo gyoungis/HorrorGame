@@ -68,10 +68,10 @@ MonoBehaviour:
     y: 447
     width: 1920
     height: 500
-  m_MinSize: {x: 432, y: 271}
-  m_MaxSize: {x: 14002, y: 10021}
+  m_MinSize: {x: 434, y: 271}
+  m_MaxSize: {x: 14004, y: 10021}
   vertical: 0
-  controlID: 93
+  controlID: 137
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -90,8 +90,8 @@ MonoBehaviour:
     y: 0
     width: 1015
     height: 500
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -117,7 +117,7 @@ MonoBehaviour:
     width: 1920
     height: 947
   m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
   controlID: 49
 --- !u!114 &6
@@ -256,7 +256,7 @@ MonoBehaviour:
     width: 1920
     height: 947
   m_MinSize: {x: 683, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 1
   controlID: 50
 --- !u!114 &12
@@ -404,19 +404,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Models
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Models
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Gavin\Documents\HorrorGame
+  m_LastProjectPath: C:\Users\gyoun\Desktop\UnityProjects\HorrorGame
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 90260000
-    m_LastClickedID: 9872
-    m_ExpandedIDs: 00000000c424000018250000522500005e250000fc25000000ca9a3bffffff7f
+    m_SelectedIDs: c42b0000
+    m_LastClickedID: 11204
+    m_ExpandedIDs: 000000006c2b0000aa2b0000ca2b0000d02b0000f42b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -444,7 +444,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c424000018250000522500005e250000fc250000
+    m_ExpandedIDs: 000000006c2b0000aa2b0000ca2b0000d02b0000f42b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -560,9 +560,9 @@ MonoBehaviour:
     height: 426
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f4260000
-    m_LastClickedID: 9972
-    m_ExpandedIDs: defbffff00000000
+    m_SelectedIDs: 6a060000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 1cedffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.0248091, y: -0.7009406, z: 0.024410952, w: -0.71237}
     speed: 2
-    m_Value: {x: -0.0248091, y: -0.7009406, z: 0.024410952, w: -0.71237}
+    m_Value: {x: 0.024809098, y: 0.7009406, z: -0.02441095, w: 0.71237}
   m_Size:
     m_Target: 12.461091
     speed: 2
