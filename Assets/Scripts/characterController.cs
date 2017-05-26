@@ -66,6 +66,7 @@ public class characterController : MonoBehaviour {
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 crouch();
+                isSprinting = false;
             }
             else
             {
