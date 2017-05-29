@@ -15,4 +15,10 @@ public class Note : MonoBehaviour {
             gameObject.SetActive(false);
         }
     }
+
+    public void PlaySound()
+    {
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.Play();
+    }
 }

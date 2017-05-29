@@ -5,23 +5,41 @@ using UnityEngine;
 public class InteractionBehavior : MonoBehaviour {
 
     public float interact_distance = 5f;
+    private Camera fpsCam;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+    //TODO: Don't do this here
+    AudioSource[] audio;
+
+
+    // Use this for initialization
+    void Start () {
+        fpsCam = GetComponent<Camera>();
+        audio = GetComponentsInChildren<AudioSource>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            Ray ray = new Ray(transform.position, transform.forward);
+            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.6f));
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, interact_distance))
+            Ray ray = new Ray(transform.position, transform.forward);
+            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, interact_distance))
             {
                 if (hit.collider.CompareTag("Door"))
                 {
                     hit.collider.transform.GetComponent<DoorBehavior>().ChangeDoorState();
+                    hit.collider.transform.GetComponent<DoorBehavior>().PlaySound();
+                }
+                if (hit.collider.CompareTag("Note"))
+                {
+                    Note state = hit.collider.GetComponent<Note>();
+                    audio[4].Play();
+                    if (state != null)
+                    {
+                        state.pickedUp(1);
+                        state.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.0f;
+                    }
                 }
             }
         }

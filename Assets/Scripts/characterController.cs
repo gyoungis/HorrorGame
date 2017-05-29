@@ -20,36 +20,22 @@ public class characterController : MonoBehaviour {
     public float pickupDist = 4.0f;
     public Slider slider;
 
-    private Camera fpsCam;
     private Vector3 moveDirection = Vector3.zero;
+
+    //Audio
+    AudioSource[] audio;
+    public bool was_sprinting = false;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
-        fpsCam = GetComponentInChildren<Camera>();
+        audio = GetComponentsInChildren<AudioSource>();
 
         // Hides mouse cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
-            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.6f));
-            RaycastHit hit;
-
-            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, pickupDist))
-            {
-                Note state = hit.collider.GetComponent<Note>();
-                if (state != null)
-                {
-                    state.pickedUp(1);
-                    state.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.0f;
-                }
-            }
-        }
-
-
         if (controller.isGrounded)
         {
             // Determines movement of player
@@ -111,9 +97,31 @@ public class characterController : MonoBehaviour {
             }
 
             moveDirection *= speed;
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump")) {
                 moveDirection.y = jumpSpeed;
+                audio[3].Play();
+            }
 
+            if (!was_sprinting && isSprinting)
+            {
+                audio[1].Play();
+            }
+
+            if (was_sprinting && !isSprinting)
+            {
+                audio[1].Stop();
+                audio[2].Play();
+            }
+
+        }
+
+        if (isSprinting)
+        {
+            was_sprinting = true;
+        }
+        else
+        {
+            was_sprinting = false;
         }
 
         // Final player Movement

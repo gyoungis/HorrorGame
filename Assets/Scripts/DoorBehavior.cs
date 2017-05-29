@@ -18,6 +18,19 @@ public class DoorBehavior : MonoBehaviour {
     {
         open = !open;
     }
+
+    public void PlaySound()
+    {
+        AudioSource[] audio = GetComponentsInChildren<AudioSource>();
+        if (open)
+        {
+            audio[0].Play();
+        }
+        else
+        {
+            audio[1].Play();
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
