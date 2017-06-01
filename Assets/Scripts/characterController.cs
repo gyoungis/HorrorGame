@@ -17,7 +17,6 @@ public class characterController : MonoBehaviour {
     private float crouchSpeed = 3.0f;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
-    public float pickupDist = 4.0f;
     public Slider slider;
 
     private Vector3 moveDirection = Vector3.zero;
@@ -68,6 +67,7 @@ public class characterController : MonoBehaviour {
                 if (stamina > 100)
                 {
                     outOfBreath = false;
+                    stamina = 100;
                 }
             }
             slider.value = stamina;

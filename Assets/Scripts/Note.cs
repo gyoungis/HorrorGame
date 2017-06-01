@@ -10,7 +10,7 @@ public class Note : MonoBehaviour {
     {
         state = state - picked;
 
-        if (state == 0)
+        if (state < 1)
         {
             gameObject.SetActive(false);
         }

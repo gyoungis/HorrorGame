@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractionBehavior : MonoBehaviour {
 
-    public float interact_distance = 5f;
+    public float interact_distance = 7f;
     private Camera fpsCam;
 
     //TODO: Don't do this here
@@ -21,9 +21,9 @@ public class InteractionBehavior : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.6f));
+            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));
             RaycastHit hit;
-            Ray ray = new Ray(transform.position, transform.forward);
+            //Ray ray = new Ray(transform.position, transform.forward);
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, interact_distance))
             {
                 if (hit.collider.CompareTag("Door"))
@@ -38,7 +38,7 @@ public class InteractionBehavior : MonoBehaviour {
                     if (state != null)
                     {
                         state.pickedUp(1);
-                        state.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.0f;
+                        //state.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.0f;
                     }
                 }
             }
