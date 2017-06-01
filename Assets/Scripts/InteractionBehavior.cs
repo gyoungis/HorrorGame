@@ -6,6 +6,7 @@ public class InteractionBehavior : MonoBehaviour {
 
     public float interact_distance = 7f;
     private Camera fpsCam;
+    public GameObject hitMarker;
 
     //TODO: Don't do this here
     AudioSource[] audio;
@@ -30,10 +31,12 @@ public class InteractionBehavior : MonoBehaviour {
                 {
                     hit.collider.transform.GetComponent<DoorBehavior>().ChangeDoorState();
                     hit.collider.transform.GetComponent<DoorBehavior>().PlaySound();
+                    Instantiate(hitMarker, hit.point, Quaternion.identity);
                 }
                 if (hit.collider.CompareTag("Note"))
                 {
                     Note state = hit.collider.GetComponent<Note>();
+                    Instantiate(hitMarker, hit.point, Quaternion.identity);
                     audio[4].Play();
                     if (state != null)
                     {
