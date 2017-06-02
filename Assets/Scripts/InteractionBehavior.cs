@@ -6,8 +6,11 @@ public class InteractionBehavior : MonoBehaviour {
 
     public float interact_distance = 7f;
     private Camera fpsCam;
-    public GameObject hitMarker;
 
+    // Debugging
+    public GameObject hitMarker;
+    private LineRenderer hitLine;
+    private WaitForSeconds Duration = new WaitForSeconds(0.07f);
     //TODO: Don't do this here
     AudioSource[] audio;
 
@@ -16,35 +19,72 @@ public class InteractionBehavior : MonoBehaviour {
     void Start () {
         fpsCam = GetComponent<Camera>();
         audio = GetComponentsInChildren<AudioSource>();
+
+        // Debug
+        hitLine = GetComponent<LineRenderer>();
     }
 
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));
+            StartCoroutine(lineEffect());
+            hitLine.SetPosition(0, fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.7f)));
+
+            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.7f));
             RaycastHit hit;
             //Ray ray = new Ray(transform.position, transform.forward);
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, interact_distance))
             {
-                if (hit.collider.CompareTag("Door"))
+
+                hitLine.SetPosition(1, hit.point);
+                //if (hit.collider.CompareTag("Door"))
+                //{
+                //    hit.collider.transform.GetComponent<DoorBehavior>().ChangeDoorState();
+                //    hit.collider.transform.GetComponent<DoorBehavior>().PlaySound();
+                //    Instantiate(hitMarker, hit.point, Quaternion.identity);
+                //}
+                //if (hit.collider.CompareTag("Note"))
+                //{
+                //    Note state = hit.collider.GetComponent<Note>();
+                //    Instantiate(hitMarker, hit.point, Quaternion.identity);
+                //    audio[4].Play();
+                //    if (state != null)
+                //    {
+                //        state.pickedUp(1);
+                //        //state.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.0f;
+                //    }
+                //}
+
+                DoorBehavior door = hit.collider.GetComponent<DoorBehavior>();
+                if (door != null)
                 {
                     hit.collider.transform.GetComponent<DoorBehavior>().ChangeDoorState();
                     hit.collider.transform.GetComponent<DoorBehavior>().PlaySound();
                     Instantiate(hitMarker, hit.point, Quaternion.identity);
                 }
-                if (hit.collider.CompareTag("Note"))
+
+                Note hitNote = hit.collider.GetComponent<Note>();
+                if (hitNote != null)
                 {
-                    Note state = hit.collider.GetComponent<Note>();
                     Instantiate(hitMarker, hit.point, Quaternion.identity);
                     audio[4].Play();
-                    if (state != null)
-                    {
-                        state.pickedUp(1);
-                        //state.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 2.0f;
-                    }
+                    hitNote.pickedUp(1);
                 }
+            }
+            else
+            {
+                hitLine.SetPosition(1, fpsCam.transform.forward * interact_distance);
             }
         }
 	}
+
+    private IEnumerator lineEffect()
+    {
+        hitLine.enabled = true;
+
+        yield return Duration;
+
+        hitLine.enabled = false;
+    }
 }
