@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class InteractionBehavior : MonoBehaviour {
 
-    public float interact_distance = 7f;
+    public float interact_distance = 3f;
     private Camera fpsCam;
 
     // Debugging
     public GameObject hitMarker;
     private LineRenderer hitLine;
     private WaitForSeconds Duration = new WaitForSeconds(0.07f);
+
     //TODO: Don't do this here
     AudioSource[] audio;
 
 
     // Use this for initialization
     void Start () {
-        fpsCam = GetComponent<Camera>();
+        fpsCam = this.GetComponent<Camera>();
         audio = GetComponentsInChildren<AudioSource>();
 
         // Debug
         hitLine = GetComponent<LineRenderer>();
+
     }
 
     // Update is called once per frame
@@ -29,14 +31,19 @@ public class InteractionBehavior : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(lineEffect());
-            hitLine.SetPosition(0, fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.7f)));
 
-            Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.7f));
+
+            //Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, fpsCam.nearClipPlane));
+            Vector3 rayOrigin = fpsCam.transform.position;
+            hitLine.SetPosition(0, rayOrigin);
+            Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0.7f));
             RaycastHit hit;
+            Debug.Log(rayOrigin);
             //Ray ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, interact_distance))
+            //if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, interact_distance))
+            if (Physics.Raycast(ray, out hit))
             {
-
+                
                 hitLine.SetPosition(1, hit.point);
                 //if (hit.collider.CompareTag("Door"))
                 //{

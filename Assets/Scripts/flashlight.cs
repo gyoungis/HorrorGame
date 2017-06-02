@@ -76,7 +76,7 @@ public class flashlight : MonoBehaviour {
                 batteryLife = 100;
             }
         }
-        Debug.Log(batteryLife);
+
         slider.value = batteryLife;
     }
 }
