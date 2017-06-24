@@ -59,7 +59,7 @@ public class InteractionBehavior : MonoBehaviour {
 
                     Note state = hit.collider.GetComponent<Note>();
                     
-                    audio[4].Play();
+                    audio[3].Play();
                     if (state != null)
                     {
                         state.pickedUp(1);
