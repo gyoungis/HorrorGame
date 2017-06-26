@@ -12,13 +12,19 @@ public class characterController : MonoBehaviour {
     float stamina = 100f;
 
     public float playerHeight = 2.0f;
-    private float speed = 5.0F;
-    private float sprintSpeed = 8.0f;
-    private float crouchSpeed = 3.0f;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
     public Slider slider;
+    
 
+    private float speed = 4.0f;
+    private float walkingSpeed = 4.0f;
+    private float sprintSpeed = 6.0f;
+    private float crouchSpeed = 2.0f;
+    private float sprintDelay = 1.0f;
+    private float sprintable;
+    
+    
     private Vector3 moveDirection = Vector3.zero;
 
     //Audio
@@ -43,7 +49,7 @@ public class characterController : MonoBehaviour {
 
             // Changes speed to Sprinting
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && Time.time > sprintable)
             {
                 if (outOfBreath == false)
                 {
@@ -60,6 +66,15 @@ public class characterController : MonoBehaviour {
                 isSprinting = false;
             }
 
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                if (Time.time > sprintable)
+                {
+                    sprintable = Time.time + sprintDelay;
+                    Debug.Log(Time.time);
+                    Debug.Log(sprintable);
+                }
+            }
 
             if (outOfBreath == true || isSprinting == false)
             {
@@ -93,7 +108,7 @@ public class characterController : MonoBehaviour {
             }
             else
             {
-                speed = 6.0f;
+                speed = walkingSpeed;
             }
 
             moveDirection *= speed;
