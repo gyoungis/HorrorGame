@@ -61,22 +61,22 @@ public class Lantern : MonoBehaviour
                 fuel = 0;
             }
         }
-        else
-        {
-            if (fuel < 100)
-            {
-                fuel = fuel + Time.fixedDeltaTime * 5.0f;
+        //else
+        //{
+        //    if (fuel < 100)
+        //    {
+        //        fuel = fuel + Time.fixedDeltaTime * 5.0f;
 
-                if (fuel > 20)
-                {
-                    fillArea.color = strongLight;
-                }
-            }
-            else if (fuel > 100)
-            {
-                fuel = 100;
-            }
-        }
+        //        if (fuel > 20)
+        //        {
+        //            fillArea.color = strongLight;
+        //        }
+        //    }
+        //    else if (fuel > 100)
+        //    {
+        //        fuel = 100;
+        //    }
+        //}
 
         slider.value = fuel;
     }
