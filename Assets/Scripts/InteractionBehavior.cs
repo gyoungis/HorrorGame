@@ -5,7 +5,10 @@ using UnityEngine;
 public class InteractionBehavior : MonoBehaviour {
 
     public float interact_distance = 3f;
+    public float mainKeys = 0;
+
     private Camera fpsCam;
+    
 
     // Debugging
     //public GameObject hitMarker;
@@ -67,6 +70,10 @@ public class InteractionBehavior : MonoBehaviour {
 
                     //Debugging
                     //Instantiate(hitMarker, hit.point, Quaternion.identity);
+                }
+                if (hit.collider.CompareTag("mainKey"))
+                {
+                    mainKeys += 1f;
                 }
 
 
