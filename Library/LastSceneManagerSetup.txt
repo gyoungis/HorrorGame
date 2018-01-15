@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/MonsterTestScene.unity
+- path: Assets/Scenes/MonsterTestScene.unity
   isLoaded: 1
   isActive: 1

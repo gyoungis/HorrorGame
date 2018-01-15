@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\InteractionBehavior.cs" />
     <Compile Include="Assets\Scripts\Lantern.cs" />
     <Compile Include="Assets\Scripts\MonsterBehavior.cs" />
+    <Compile Include="Assets\Scripts\MonsterScript.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
     <Compile Include="Assets\Scripts\characterController.cs" />
     <Compile Include="Assets\Scripts\flashlight.cs" />

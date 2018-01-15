@@ -7,8 +7,9 @@ public class MonsterBehavior : MonoBehaviour {
     public GameObject Monster;
     public GameObject Player;
 
+    public int keyProg;
+
     private bool spawned = false;
-    private float keyProg;
     private float nextSpawn;
     private float deSpawn;
     private Camera playerCam;
@@ -16,10 +17,9 @@ public class MonsterBehavior : MonoBehaviour {
 
     private void Start()
     {
-        Monster = GetComponent<GameObject>();
-        Player = GetComponent<GameObject>();
         nextSpawn = Time.time + 8f;
         deSpawn = nextSpawn + 30f;
+        Debug.Log(Player);
     }
 
     private void Update()
@@ -31,7 +31,8 @@ public class MonsterBehavior : MonoBehaviour {
             if (Time.time == deSpawn)
             {
                 Destroy(Monster);
-                nextSpawn = Time.time + 80f / keyProg;
+                nextSpawn = Time.time + 80f / (keyProg + 1);
+                nextSpawn = Time.time + 30f;
             }
         }
         else

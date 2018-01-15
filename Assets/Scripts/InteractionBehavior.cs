@@ -5,7 +5,7 @@ using UnityEngine;
 public class InteractionBehavior : MonoBehaviour {
 
     public float interact_distance = 3f;
-    public float mainKeys = 0;
+    public int mainKeys = 0;
 
     private Camera fpsCam;
     
@@ -73,7 +73,7 @@ public class InteractionBehavior : MonoBehaviour {
                 }
                 if (hit.collider.CompareTag("mainKey"))
                 {
-                    mainKeys += 1f;
+                    mainKeys += 1;
                 }
 
 
