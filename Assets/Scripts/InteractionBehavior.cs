@@ -74,6 +74,13 @@ public class InteractionBehavior : MonoBehaviour {
                 if (hit.collider.CompareTag("mainKey"))
                 {
                     mainKeys += 1;
+
+                    keyScript keyState = hit.collider.GetComponent<keyScript>();
+
+                    if (keyState != null)
+                    {
+                        keyState.pickedUp(1);
+                    }
                 }
 
 

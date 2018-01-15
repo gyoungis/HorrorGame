@@ -13,6 +13,7 @@ public class MonsterBehavior : MonoBehaviour {
     private float nextSpawn;
     private float deSpawn;
     private Camera playerCam;
+    private Vector3 playerPos;
     
 
     private void Start()
@@ -39,7 +40,8 @@ public class MonsterBehavior : MonoBehaviour {
         {
             if (Time.time == nextSpawn)
             {
-
+                playerPos = Player.transform.position;
+                Instantiate(Monster, playerPos - new Vector3(0, 5, 0), Quaternion.identity);
             }
         }
     }

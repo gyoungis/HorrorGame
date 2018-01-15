@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Note.cs" />
     <Compile Include="Assets\Scripts\characterController.cs" />
     <Compile Include="Assets\Scripts\flashlight.cs" />
+    <Compile Include="Assets\Scripts\keyScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
