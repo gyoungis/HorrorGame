@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 32bfdcf751f727146a61748a8ea6b4c1
+timeCreated: 1496092173
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - door_open: {fileID: 8300000, guid: 7e86234f669757c4490b663d3dd8d869, type: 3}
+  - door_close: {fileID: 8300000, guid: 068be2cac1992d649885d31f219db795, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
