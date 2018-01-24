@@ -16,7 +16,7 @@ public class flashlight : MonoBehaviour {
 
     void Start()
     {
-        flashLight = GetComponent<Light>();
+        flashLight = GetComponentInChildren<Light>();
         soundSource = GetComponent<AudioSource>();
     }
 
