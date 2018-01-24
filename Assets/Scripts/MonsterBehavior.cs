@@ -6,10 +6,12 @@ public class MonsterBehavior : MonoBehaviour {
 
     public GameObject Monster;
     public GameObject Player;
+    public GameObject spawnLoc;
 
     public int keyProg;
 
     private bool spawned = false;
+    private float nextSpawnPoint;
     private float nextSpawn;
     private float deSpawn;
     private Camera playerCam;
@@ -18,8 +20,8 @@ public class MonsterBehavior : MonoBehaviour {
 
     private void Start()
     {
-        nextSpawn = Time.time + 8f;
-        deSpawn = nextSpawn + 30f;
+        nextSpawnPoint = Time.time + 8.0f;
+        nextSpawn = Time.time + 16.0f;
         Debug.Log(Player);
     }
 
@@ -32,16 +34,22 @@ public class MonsterBehavior : MonoBehaviour {
             if (Time.time == deSpawn)
             {
                 Destroy(Monster);
-                nextSpawn = Time.time + 80f / (keyProg + 1);
-                nextSpawn = Time.time + 30f;
+                nextSpawnPoint = Time.time + 80f / (keyProg + 1);
             }
         }
         else
         {
+            if (Time.time == nextSpawnPoint)
+            {
+                Instantiate(spawnLoc, playerPos, Quaternion.identity);
+                nextSpawn = Time.time + 20f / (keyProg + 1);
+            }
             if (Time.time == nextSpawn)
             {
                 playerPos = Player.transform.position;
-                Instantiate(Monster, playerPos - new Vector3(0, 5, 0), Quaternion.identity);
+                Instantiate(Monster, spawnLoc.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                deSpawn = Time.time + 10.0f;
+                Destroy(spawnLoc);
             }
         }
     }

@@ -316,6 +316,7 @@
     <Compile Include="Assets\Scripts\MonsterBehavior.cs" />
     <Compile Include="Assets\Scripts\MonsterScript.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
+    <Compile Include="Assets\spawnPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
