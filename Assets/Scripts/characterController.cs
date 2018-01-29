@@ -9,7 +9,10 @@ public class characterController : MonoBehaviour {
     bool isSprinting = false;
     bool crouching = false;
     bool outOfBreath = false;
+    bool coll = false;
     float stamina = 100f;
+    Collision collInfo;
+
 
     public float playerHeight = 2.0f;
     public float jumpSpeed = 8.0F;
@@ -92,9 +95,13 @@ public class characterController : MonoBehaviour {
                 crouch();
                 isSprinting = false;
             }
-            else
+
+            if (Input.GetKeyUp(KeyCode.LeftControl))
             {
-                standing();
+                if (OnCollisionEnter(collInfo))
+                {
+                    crouch();
+                }
             }
 
             // Changes player speed according to current state
@@ -157,5 +164,11 @@ public class characterController : MonoBehaviour {
     {
         controller.height = playerHeight;
         crouching = false;
+    }
+
+    bool OnCollisionEnter(Collision collisionInfo)
+    {
+        coll = true;
+        return coll;
     }
 }

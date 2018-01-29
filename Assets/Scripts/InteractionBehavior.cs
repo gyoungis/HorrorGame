@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionBehavior : MonoBehaviour {
 
     public float interact_distance = 3f;
     public int mainKeys = 0;
+    public Text keyCountText;
 
     private Camera fpsCam;
     
@@ -26,6 +28,7 @@ public class InteractionBehavior : MonoBehaviour {
 
         // Debug
         //hitLine = GetComponent<LineRenderer>();
+        keyCountText.text = "x" + mainKeys.ToString();
 
     }
 
@@ -74,7 +77,7 @@ public class InteractionBehavior : MonoBehaviour {
                 if (hit.collider.CompareTag("mainKey"))
                 {
                     mainKeys += 1;
-
+                    keyCountText.text = "x" + mainKeys.ToString();
                     keyScript keyState = hit.collider.GetComponent<keyScript>();
 
                     if (keyState != null)
